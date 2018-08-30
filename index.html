@@ -23,7 +23,10 @@
             <li>
               <select class="drop-down-button">
                  <option value="default">default</option>
-                 <option value="minimum">minimum</option>
+                 <option value="minimum">2+</option>
+                 <option value="minimum">3+</option>
+                 <option value="minimum">4+</option>
+                 <option value="minimum">5</option>
               </select>
              </li>
           </ul>
@@ -31,22 +34,21 @@
 
         <div class="form-add-div js-form-add-div">
                 <form class="form-style-4" action="" method="post">
-                        <label for="field1">
-                        <span>Enter Book Name</span><input type="text" name="field1" required="true" />
-                        </label>
-                        <label for="field2">
-                        <span>Enter URL</span><input type="text" name="field2" required="true" />
-                        </label>
-                        <label for="field3">
-                        <span>Enter Description</span><input type="text" name="field3" required="true" />
-                        </label>
-                        <label for="field4">
-                        <span>Enter Rating</span><textarea name="field4" onkeyup="adjust_textarea(this)" required="true"></textarea>
-                        </label>
-                        <label>
-                        <span>&nbsp;</span><input type="submit" value="Send Letter" />
-                        </label>
-                        </form>
+                    <label for="field1">
+                    <span>Enter Book Name</span><input type="text" name="title" required="true" />
+                    </label>
+                    <label for="field2">
+                    <span>Enter URL</span><input type="text" name="url" required="true" />
+                    </label>
+                    <label for="field3">
+                    <span>Enter Description</span><input type="text" name="description" required="true" />                        </label>
+                    <label for="field4">
+                    <span>Rate Out of 5!</span><textarea name="rating" onkeyup="adjust_textarea(this)" required="true"></textarea>
+                    </label>
+                    <label>
+                    <span>&nbsp;</span><input type="submit" value="Send Letter" />
+                    </label>
+                    </form>
         </div>
 
         <ul class="container-for-bookmarks">
@@ -85,12 +87,18 @@
                       <div class="fa fa-star "></div>
                     </div>
                     <button class="more-info-bttn">More Info!</button>
-                    <div class="bookmark-description">
-                        <p>dafafffffffffffffffffffffffffffffffff
-                                dafafffffffffffffffffffffffffffffffff
-                                dafafffffffffffffffffffffffffffffffff
-                                dafafffffffffffffffffffffffffffffffff
-                        </p>
+                    <div class="bookmark-details">
+                      <div class="bookmark-paragraph">
+                        <div>dafafffffffffffffffffffffffffffffffff
+                            dafafffffffffffffffffffffffffffffffff
+                            dafafffffffffffffffffffffffffffffffff
+                            dafafffffffffffffffffffffffffffffffff
+                        </div>
+                      </div>
+                        <div class="link-delete-container">
+                            <a href="google.com">hello</a>
+                            <button class="delete-button">DELETE</button>
+                        </div>
                     </div>
                   </ul>
         
