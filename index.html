@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montez|Montserrat|Roboto|Playfair+Display" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <header class="title-of-page">
+          <h1>My Bookmarks</h1>
+          <hr class="style-eight"></hr>
+        </header>
+
+        <nav>
+          <ul class="flex-container-for-buttons">
+            <li>
+                <button class="add-new-button">Add Bookmark</button>
+            </li>
+            <li>
+              <select class="drop-down-button">
+                 <option value="default">default</option>
+                 <option value="minimum">minimum</option>
+              </select>
+             </li>
+          </ul>
+        </nav>
+
+        <div class="form-add-div js-form-add-div">
+                <form class="form-style-4" action="" method="post">
+                        <label for="field1">
+                        <span>Enter Book Name</span><input type="text" name="field1" required="true" />
+                        </label>
+                        <label for="field2">
+                        <span>Enter URL</span><input type="text" name="field2" required="true" />
+                        </label>
+                        <label for="field3">
+                        <span>Enter Description</span><input type="text" name="field3" required="true" />
+                        </label>
+                        <label for="field4">
+                        <span>Enter Rating</span><textarea name="field4" onkeyup="adjust_textarea(this)" required="true"></textarea>
+                        </label>
+                        <label>
+                        <span>&nbsp;</span><input type="submit" value="Send Letter" />
+                        </label>
+                        </form>
+        </div>
+
+        <ul class="container-for-bookmarks">
+                <li class="bookmark-title">BookMark Title Here</li>
+                <div class="star-container">
+                  <div class="fa fa-star checked"></div>
+                  <div class="fa fa-star checked"></div>
+                  <div class="fa fa-star checked"></div>
+                  <div class="fa fa-star "></div>
+                  <div class="fa fa-star "></div>
+                
+                <button class="more-info-bttn">More Info!</button>
+              </ul>
+            </div>
+         
+        <ul class="container-for-bookmarks">
+                <li class="bookmark-title">BookMark Title Here</li>
+                <div class="star-container">
+                  <div class="fa fa-star checked"></div>
+                  <div class="fa fa-star checked"></div>
+                  <div class="fa fa-star checked"></div>
+                  <div class="fa fa-star "></div>
+                  <div class="fa fa-star "></div>
+                
+                <button class="more-info-bttn">More Info!</button>
+              </ul>
+            </div>
+
+              <ul class="container-for-bookmarks">
+                    <li class="bookmark-title">BookMark Title Here</li>
+                    <div class="star-container">
+                      <div class="fa fa-star checked"></div>
+                      <div class="fa fa-star checked"></div>
+                      <div class="fa fa-star checked"></div>
+                      <div class="fa fa-star "></div>
+                      <div class="fa fa-star "></div>
+                    </div>
+                    <button class="more-info-bttn">More Info!</button>
+                    <div class="bookmark-description">
+                        <p>dafafffffffffffffffffffffffffffffffff
+                                dafafffffffffffffffffffffffffffffffff
+                                dafafffffffffffffffffffffffffffffffff
+                                dafafffffffffffffffffffffffffffffffff
+                        </p>
+                    </div>
+                  </ul>
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="index.js" async defer></script>
+    </body>
+</html>

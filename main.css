@@ -1,0 +1,234 @@
+* {
+        box-sizing: border-box;
+}
+
+html {
+    height: 100%
+}
+   
+body {
+    height: 100%;
+    padding: 0;
+    background: #E8E1E7;
+  }
+
+  h1 {
+    font-weight: lighter;
+  }
+
+.title-of-page {
+    width: 100%;
+    text-align: center;
+    font-family: Playfair Display; 
+    font-size: 32px;
+    margin-bottom: 60px;
+    
+}
+
+
+
+
+.flex-container-for-buttons {
+    
+    margin-bottom: 80px;
+    border-radius: 25px;
+    display: flex;
+    flex: wrap;
+    justify-content: space-around;
+}
+
+.add-new-button {
+    font-size: 22px;
+    color: #E2C6CC;
+}
+
+.container-for-bookmarks {
+    
+    border-radius: 25px;
+    margin-top: 100px;
+    background: #6C806F;
+    padding: 20px; 
+    text-align: center;
+    list-style: none;
+    padding-left: 0;
+    margin: 20px auto 60px auto;
+    width: 800px;
+    display: block;
+    justify-content: space-between;
+    font-family: Playfair Display;
+    align-content: center;
+    
+}
+
+.container-for-bookmarks li {
+    
+    display: block;
+    padding: 20px;
+    align-content: center;
+    align-items: center;
+}
+
+.bookmark-title {
+    font-size: 30px;
+}
+
+.more-info-bttn {
+    border-radius: 8px;
+    font-family: Playfair Display;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #828B9F;
+    border: 1px solid gray;
+    display: block;
+    margin: 20px auto;
+}
+
+.more-info-bttn:hover {
+  background: rgb(126, 135, 155)
+}
+
+.star-container {
+    
+    margin: 0 auto;
+}
+
+
+.flex-container-for-buttons li {
+  list-style: none;
+}
+
+.flex-container-for-buttons button {
+    height: 60px;
+    width: 300px;
+    background: #828B9F;
+    font-family: Playfair Display;
+    border: 5px solid #53687E;
+}
+
+.flex-container-for-buttons button:hover {
+    color: #9050AA;
+    border-color: currentColor;
+    background-color: rgb(218, 187, 226)
+}
+
+.drop-down-button {
+    padding-left: 30px;
+    font-size: 22px;
+    text-align: center;
+    height: 60px;
+    width: 300px;
+    background: #828B9F;
+    font-family: Playfair Display;
+    border: 5px solid #53687E;
+}
+
+.checked {
+    color: orange;
+    margin: auto;
+}
+
+hr.style-eight {
+    overflow: visible; /* For IE */
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px 0 0 0;
+    border-radius: 20px;
+}
+hr.style-eight:after {
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+
+
+.js-form-add-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.form-style-4{
+    width: 600px;
+    font-size: 16px;
+    background: #828B9F;
+    padding: 30px 30px 15px 30px;
+    border: 5px solid #53687E;
+}
+
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button],
+.form-style-4 input[type=text],
+.form-style-4 input[type=email],
+.form-style-4 textarea,
+.form-style-4 label
+{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    color: #fff;
+
+}
+.form-style-4 label {
+    display:block;
+    margin-bottom: 10px;
+}
+.form-style-4 label > span{
+    display: inline-block;
+    float: left;
+    width: 150px;
+}
+.form-style-4 input[type=text],
+.form-style-4 input[type=email] 
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    outline: none;
+    padding: 0px 0px 0px 0px;
+    font-style: italic;
+}
+.form-style-4 textarea{
+    font-style: italic;
+    padding: 0px 0px 0px 0px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    overflow: hidden;
+    resize:none;
+    height:20px;
+}
+
+.form-style-4 textarea:focus, 
+.form-style-4 input[type=text]:focus,
+.form-style-4 input[type=email]:focus,
+.form-style-4 input[type=email] :focus
+{
+    border-bottom: 1px dashed #D9FFA9;
+}
+
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button]{
+    background: #576E86;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+    color: #A8BACE;
+    float: right;
+}
+.form-style-4 input[type=submit]:hover,
+.form-style-4 input[type=button]:hover{
+background: #394D61;
+}
+
+.bookmark-description {
+    width: 300px;
+    display: flex;
+}
