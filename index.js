@@ -20,3 +20,9 @@
 // });
 
 console.log('hello');
+
+
+$(function () {
+    bookmark.handleClicks();
+    bookmark.render();
+  });
