@@ -61,6 +61,7 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+
      body {
         margin: 0 auto;
      }
@@ -84,6 +85,7 @@ body {
         list-style: none;
         padding-left: 0;
         margin: 20px auto 60px auto;
+        max-width: 600px;
         width: 75%;
         display: block;
         justify-content: space-between;
@@ -192,6 +194,11 @@ hr.style-eight:after {
 
 
 .js-form-add-div {
+    display: flex;
+    justify-content: center;
+}
+
+.js-form-add-div2 {
     display: flex;
     justify-content: center;
 }

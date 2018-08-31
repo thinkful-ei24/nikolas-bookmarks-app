@@ -27,7 +27,7 @@ const bookmark = (function () {
   
  
 
- //move
+  //move
 
 
   const generateBookMarkHtml = function (obj) {
@@ -99,7 +99,9 @@ const bookmark = (function () {
           </div>
             <div class="link-delete-container">
                 <a href="${obj.url}">${obj.url}</a>
+                
                 <button class="delete-button">DELETE</button>
+                <button class="edit-button">EDIT</button>
             </div>
         </div></div>
         <button class="more-info-bttn">Less Info!</button>
@@ -144,6 +146,26 @@ const bookmark = (function () {
      </form>`;
   };
 
+  const generateEditFormHtml = function () {
+    return ` <form class="form-style-4" action="" method="post">
+    <label for="field1">
+    <span>New Book Name</span><input type="text" name="title" id="title" required="true" />
+    </label>
+    <label for="field2">
+    <span>New URL</span><input type="text" name="url"  id="url" required="true" />
+    </label>
+    <label for="field3">
+    <span>New Description</span><input type="text" name="description" id="description" required="true" />                        </label>
+    <label for="field4">
+    <span>Rerate Out of 5!</span><textarea name="rating" id="rating" onkeyup="adjust_textarea(this)" required="true"></textarea>
+    </label>
+    <label>
+    <span>&nbsp;</span><input type="submit" class="edit-form" value="Edit" />
+    </label>
+   </form>`;
+  };
+ 
+
   const renderNoFormHtml = function () {
     return `<div class="form-add-div js-form-add-div">
                  </div>`;
@@ -162,10 +184,10 @@ const bookmark = (function () {
   const handleBookMarkSubmit = function () {
     $('.js-form-add-div').submit(function (event) {
       event.preventDefault();
-      let title = $(this).find('#title').val();
-      let url= $(this).find('#url').val();
-      let desc = $(this).find('#description').val();
-      let rating = parseInt($(this).find('#rating').val());
+      let title = $('#title').val();
+      let url= $('#url').val();
+      let desc = $('#description').val();
+      let rating = parseInt($('#rating').val());
 
       let newObj = {
         title,
@@ -176,6 +198,11 @@ const bookmark = (function () {
       };
       api.createItem(newObj, (newObj) => {
         store.addItem(newObj);
+        render();
+      },(error) => {
+        let errorMessage = error.responseJSON.message;
+        alert(errorMessage);
+
         render();
       });
       $('.js-form-add-div').html(renderNoFormHtml());
@@ -223,11 +250,52 @@ const bookmark = (function () {
       let thisBookmark = $(this).closest('.container-for-bookmarks');
       let elementId = getItemIdFromElement(thisBookmark);
       api.deleteItem(elementId, () => {
-        findAndDelete(elementId);
+        store.findAndDelete(elementId);
         render();
       });
      
     });
+  };
+
+  const handleEditButtonClick = function () {
+    $('.all-book-marks-go-here').on('click', '.edit-button', function(event) {
+      $('.js-form-add-div2').html(generateEditFormHtml());  
+
+    });
+  };
+
+  const handleEditFormSubmit = function () {
+    
+    $('.all-book-marks-go-here').on('click', '.edit-button', function(event) {
+      let dog = getItemIdFromElement(event.currentTarget);
+      let objectBookmark = findById(dog);
+      let bookmarkObject = store.storedBookMarks.find(obj => obj.id === dog);
+      console.log(bookmarkObject);
+
+      $('body').on('click', '.edit-form', function(event2) {
+        event2.preventDefault();
+        let title = $('#title').val();
+        let url = $('#url').val();
+        let desc = $('#description').val();
+        let rating = parseInt($('#rating').val());
+        let newObj = {
+          title,
+          url,
+          desc,
+          rating,
+        };
+        api.updateItem(dog, newObj, () =>{
+          Object.assign(bookmarkObject, newObj);
+          $('.js-form-add-div2').html(renderNoFormHtml());
+          dog = "";
+          render();
+        }, (error) =>{
+          console.log(error.responseJSON.message);
+        }); 
+      });
+    });
+
+    render();
   };
 
   const handleClicks = function () {
@@ -236,6 +304,8 @@ const bookmark = (function () {
     handleBookMarkSubmit();
     handleInfoButtonClick();
     handleDeleteBookmark();
+    handleEditButtonClick();
+    handleEditFormSubmit();
   };
 
  
