@@ -27,7 +27,7 @@ $(function () {
     bookmark.handleClicks();
     bookmark.render();
     api.getItems((items) => {
-       items.forEach(item => bookmark.addItem(item));
+       items.forEach(item => store.addItem(item));
        bookmark.render();
     });
   });

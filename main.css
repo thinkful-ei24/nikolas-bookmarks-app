@@ -43,7 +43,7 @@ body {
 }
 
 .container-for-bookmarks {
-    
+    border: rgb(21, 51, 39) 4px solid;
     border-radius: 25px;
     margin-top: 100px;
     background: #6C806F;
@@ -113,6 +113,7 @@ body {
 
 .bookmark-title {
     font-size: 30px;
+    font-weight: bolder
 }
 
 .more-info-bttn {
@@ -272,6 +273,7 @@ background: #394D61;
 
 .bookmark-details {
     
+    margin-top: 20px;
     padding: 30px;
     display: flex;
     align-items: center;
@@ -282,8 +284,21 @@ background: #394D61;
 
 .bookmark-description {
     width: 200px;
+    background: blue;
+    color: #E8E1E7;
 }
 
-.link-delete-container {
-    
+.bookmark-paragraph {
+    width: 300px;
+    color: #E8E1E7;
+}
+
+.delete-button {
+    margin-left: 70px;
+    color: rgb(126, 25, 47);
+    background: #E8E1E7;
+}
+
+.link-delete-container a{
+  color: #E8E1E7;
 }

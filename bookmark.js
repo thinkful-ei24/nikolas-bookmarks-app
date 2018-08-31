@@ -1,21 +1,20 @@
 'use strict';
 const bookmark = (function () {
 
-  let storedBookMarks = [];
-  let filter = 0;
+  
 
   const render = function () {
-    let items = storedBookMarks;
-    if(filter === 2) {
+    let items = store.storedBookMarks;
+    if(store.filter === 2) {
       items = items.filter(obj => obj.rating > 1);
     }
-    if(filter === 3) {
+    if(store.filter === 3) {
       items = items.filter(obj => obj.rating > 2);
     } 
-    if(filter === 4) {
+    if(store.filter === 4) {
       items = items.filter(obj => obj.rating > 3);
     }
-    if(filter === 5) {
+    if(store.filter === 5) {
       items = items.filter(obj => obj.rating > 4);
     }
     
@@ -26,13 +25,9 @@ const bookmark = (function () {
    
   };
   
-  const addItem = function (item) {
-    storedBookMarks.push(item);
-  };  //move
+ 
 
-  const findAndDelete = function(id) {
-      storedBookMarks = storedBookMarks.filter(item => item.id != id);
-  }  //move
+ //move
 
 
   const generateBookMarkHtml = function (obj) {
@@ -180,10 +175,9 @@ const bookmark = (function () {
         expanded: false,
       };
       api.createItem(newObj, (newObj) => {
-        addItem(newObj);
+        store.addItem(newObj);
         render();
       });
-      console.log(storedBookMarks);
       $('.js-form-add-div').html(renderNoFormHtml());
      
 
@@ -199,7 +193,7 @@ const bookmark = (function () {
   };
 
   const findById = function (id) {
-    let object = storedBookMarks.find(obj => obj.id === id);
+    let object = store.storedBookMarks.find(obj => obj.id === id);
     return object;
   };
 
@@ -218,7 +212,7 @@ const bookmark = (function () {
       event.preventDefault();
      
       let parsedInt = parseInt($('.drop-down-button').val());
-      filter = parsedInt;
+      store.filter = parsedInt;
       render();
     });
   };
@@ -248,11 +242,8 @@ const bookmark = (function () {
 
 
   return {
-    filter,
-    handleDropDownChange,
     render,
     handleClicks,
-    addItem,
     // handleInfoButtonClick,
   };
 
