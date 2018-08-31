@@ -7,16 +7,16 @@ const bookmark = (function () {
   const render = function () {
     let items = storedBookMarks;
     if(filter === 2) {
-        items = items.filter(obj => obj.rateValue > 1);
+      items = items.filter(obj => obj.rating > 1);
     }
     if(filter === 3) {
-      items = items.filter(obj => obj.rateValue > 2);
+      items = items.filter(obj => obj.rating > 2);
     } 
     if(filter === 4) {
-      items = items.filter(obj => obj.rateValue > 3);
+      items = items.filter(obj => obj.rating > 3);
     }
     if(filter === 5) {
-      items = items.filter(obj => obj.rateValue > 4);
+      items = items.filter(obj => obj.rating > 4);
     }
     
     console.log(items);
@@ -25,8 +25,14 @@ const bookmark = (function () {
     $('.all-book-marks-go-here').html(joinedHtmlBookmarks);
    
   };
+  
+  const addItem = function (item) {
+    storedBookMarks.push(item);
+  };  //move
 
-
+  const findAndDelete = function(id) {
+      storedBookMarks = storedBookMarks.filter(item => item.id != id);
+  }  //move
 
 
   const generateBookMarkHtml = function (obj) {
@@ -37,7 +43,7 @@ const bookmark = (function () {
    <div class="fa fa-star "></div>
    <div class="fa fa-star "></div>`;
 
-    if (obj.rateValue === 5) {
+    if (obj.rating=== 5) {
       starHTML = `<div class="star-container">
        <div class="fa fa-star checked"></div>
        <div class="fa fa-star checked"></div>
@@ -46,7 +52,7 @@ const bookmark = (function () {
        <div class="fa fa-star checked"></div>`;
     }
 
-    if (obj.rateValue === 4) {
+    if (obj.rating === 4) {
       starHTML = `
     <div class="star-container">
     <div class="fa fa-star checked"></div>
@@ -55,7 +61,7 @@ const bookmark = (function () {
     <div class="fa fa-star checked"></div>
     <div class="fa fa-star "></div>`;
     }
-    if (obj.rateValue === 3) {
+    if (obj.rating=== 3) {
       starHTML = `
     <div class="star-container">
     <div class="fa fa-star checked"></div>
@@ -65,7 +71,7 @@ const bookmark = (function () {
     <div class="fa fa-star "></div>`;
     }
 
-    if (obj.rateValue === 2) {
+    if (obj.rating === 2) {
       starHTML = `
     <div class="star-container">
     <div class="fa fa-star checked"></div>
@@ -75,7 +81,7 @@ const bookmark = (function () {
     <div class="fa fa-star "></div>`;
     }
 
-    if (obj.rateValue === 1) {
+    if (obj.rating === 1) {
       starHTML = `<div class="star-container">
     <div class="fa fa-star checked"></div>
     <div class="fa fa-star "></div>
@@ -86,18 +92,18 @@ const bookmark = (function () {
 
     if (obj.expanded === true) {
       return `<ul class="container-for-bookmarks" data-item-id="${obj.id}">   
-    <li class="bookmark-title">${obj.titleValue}</li>
+    <li class="bookmark-title">${obj.title}</li>
     <div class="star-container">
     ${starHTML}  
       <div class="expanded-space">
           <div><div class="bookmark-details">
           <div class="bookmark-paragraph">
             <div>
-             ${obj.descriptionValue}
+             ${obj.desc}
             </div>
           </div>
             <div class="link-delete-container">
-                <a href="${obj.urlValue}">${obj.urlValue}</a>
+                <a href="${obj.url}">${obj.url}</a>
                 <button class="delete-button">DELETE</button>
             </div>
         </div></div>
@@ -110,7 +116,7 @@ const bookmark = (function () {
 
     if (!obj.expanded) {
       return `<ul class="container-for-bookmarks" data-item-id="${obj.id}">   
-          <li class="bookmark-title">${obj.titleValue}</li>
+          <li class="bookmark-title">${obj.title}</li>
           <div class="star-container">
           ${starHTML}
           
@@ -161,18 +167,21 @@ const bookmark = (function () {
   const handleBookMarkSubmit = function () {
     $('.js-form-add-div').submit(function (event) {
       event.preventDefault();
-      let titleValue = $(this).find('#title').val();
-      let urlValue = $(this).find('#url').val();
-      let descriptionValue = $(this).find('#description').val();
-      let rateValue = parseInt($(this).find('#rating').val());
+      let title = $(this).find('#title').val();
+      let url= $(this).find('#url').val();
+      let desc = $(this).find('#description').val();
+      let rating = parseInt($(this).find('#rating').val());
 
-      storedBookMarks.push({
-        titleValue,
-        urlValue,
-        descriptionValue,
-        rateValue,
+      let newObj = {
+        title,
+        url,
+        desc,
+        rating,
         expanded: false,
-        id: Math.floor(Math.random() * 9999999)
+      };
+      api.createItem(newObj, (newObj) => {
+        addItem(newObj);
+        render();
       });
       console.log(storedBookMarks);
       $('.js-form-add-div').html(renderNoFormHtml());
@@ -214,6 +223,18 @@ const bookmark = (function () {
     });
   };
 
+  
+  const handleDeleteBookmark = function () {
+    $('.all-book-marks-go-here').on('click', '.delete-button', function () {
+      let thisBookmark = $(this).closest('.container-for-bookmarks');
+      let elementId = getItemIdFromElement(thisBookmark);
+      api.deleteItem(elementId, () => {
+        findAndDelete(elementId);
+        render();
+      });
+     
+    });
+  };
 
   const handleClicks = function () {
     handleAddFormHtmlOnClick();
@@ -223,12 +244,7 @@ const bookmark = (function () {
     handleDeleteBookmark();
   };
 
-  const handleDeleteBookmark = function () {
-    $('.delete-button').on('click', function () {
-      let thisBookmark = $(this).closest('.container-for-bookmarks');
-      thisBookmark.remove();
-    });
-  };
+ 
 
 
   return {
@@ -236,6 +252,7 @@ const bookmark = (function () {
     handleDropDownChange,
     render,
     handleClicks,
+    addItem,
     // handleInfoButtonClick,
   };
 

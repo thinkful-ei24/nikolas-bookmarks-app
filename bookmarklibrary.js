@@ -1,9 +1,11 @@
 'use-strict';
 
-const bookmarkLibrary = (function(){
-  let bookmarks = [];
+// const store = (function(){
+//   let storedBookMarks = [];
 
-  return {
-   bookmarks,
-  };
-}());
+  
+
+//   return {
+//    bookmarks,
+//   };
+// }());

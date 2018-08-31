@@ -23,6 +23,11 @@ console.log('hello');
 
 
 $(function () {
+    
     bookmark.handleClicks();
     bookmark.render();
+    api.getItems((items) => {
+       items.forEach(item => bookmark.addItem(item));
+       bookmark.render();
+    });
   });
