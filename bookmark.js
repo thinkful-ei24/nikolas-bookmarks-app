@@ -90,6 +90,7 @@ const bookmark = (function () {
     <li class="bookmark-title">${obj.title}</li>
     <div class="star-container">
     ${starHTML}  
+    <div class ="everything-in-expanded">
       <div class="expanded-space">
           <div><div class="bookmark-details">
           <div class="bookmark-paragraph">
@@ -103,9 +104,11 @@ const bookmark = (function () {
                 <button class="delete-button">DELETE</button>
                 <button class="edit-button">EDIT</button>
             </div>
-        </div></div>
+            </div>
+        
         <button class="more-info-bttn">Less Info!</button>
-      </div>  
+      </div>
+      </div  
     </ul>
     </div>`;
     }
@@ -290,7 +293,7 @@ const bookmark = (function () {
           dog = "";
           render();
         }, (error) =>{
-          console.log(error.responseJSON.message);
+          alert(error.responseText);
         }); 
       });
     });

@@ -2,6 +2,12 @@
         box-sizing: border-box;
 }
 
+.god-container {
+    margin: 0 auto;
+}
+
+
+
 html {
     height: 100%
 }
@@ -29,7 +35,7 @@ body {
 
 
 .flex-container-for-buttons {
-    
+    padding-left: 0;
     margin-bottom: 80px;
     border-radius: 25px;
     display: flex;
@@ -62,8 +68,18 @@ body {
 
 @media only screen and (max-width: 600px) {
 
+    .flex-container-for-buttons {
+        display: inline;
+        text-align: center;
+    }
+
      body {
         margin: 0 auto;
+     }
+
+     .expanded-space {
+       display: flex;
+       justify-content: space-evenly;
      }
 
      .title-of-page {
@@ -85,17 +101,14 @@ body {
         list-style: none;
         padding-left: 0;
         margin: 20px auto 60px auto;
-        max-width: 600px;
         width: 75%;
-        display: block;
-        justify-content: space-between;
         font-family: Playfair Display;
         align-content: center;
         
     }
 
     .form-style-4{
-        width: 75%;
+        width: 60%;
         margin-left: 20px;
         margin-right: 20px;
         font-size: 16px;
@@ -103,6 +116,26 @@ body {
         padding: 30px 30px 15px 30px;
         border: 5px solid #53687E;
     }
+
+    
+
+    .bookmark-details {
+        margin-left: 10px;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        word-wrap: break-word;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+  .container-for-bookmarks {
+      width: 70%;
+  }
+  .flex-container-for-buttons {
+      margin-left: 55px;
+  }
+  
 }
 
 .container-for-bookmarks li {
@@ -115,7 +148,8 @@ body {
 
 .bookmark-title {
     font-size: 30px;
-    font-weight: bolder
+    font-weight: bolder;
+    word-wrap: break-word;
 }
 
 .more-info-bttn {
@@ -301,10 +335,13 @@ background: #394D61;
 }
 
 .delete-button {
-    margin-left: 70px;
+    margin-top: 10px;
+    margin-left: 20px;
     color: rgb(126, 25, 47);
     background: #E8E1E7;
 }
+
+
 
 .link-delete-container a{
   color: #E8E1E7;
